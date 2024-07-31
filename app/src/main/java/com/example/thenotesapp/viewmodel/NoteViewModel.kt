@@ -2,13 +2,13 @@
 package com.example.thenotesapp.viewmodel
 
 // Import statement to include Application, which provides a base class for maintaining global application state
-import android.app.Application
 
 // Import statement to include AndroidViewModel, which is a ViewModel that is aware of the Application context
 import androidx.lifecycle.AndroidViewModel
 
 // Import statement to include viewModelScope, which is a CoroutineScope tied to the ViewModel's lifecycle
 import androidx.lifecycle.viewModelScope
+import com.example.thenotesapp.database.NoteDatabase
 
 // Import the Note class from the model package
 import com.example.thenotesapp.model.Note
@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 
 // Define a NoteViewModel class that extends AndroidViewModel
 // AndroidViewModel requires an Application instance, which is passed as app
-class NoteViewModel(app: Application, private val noteRepository: NoteRepository) : AndroidViewModel(app) {
+class NoteViewModel(app: NoteDatabase, private val noteRepository: NoteRepository) : AndroidViewModel(app) {
 
     // Function to add a note to the database
     // Runs the insertNote function from the repository in a coroutine using viewModelScope
