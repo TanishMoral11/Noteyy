@@ -75,8 +75,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
         // Set a click listener on the item view to navigate to the EditNoteFragment
         holder.itemView.setOnClickListener {
-            // Create a direction object for navigation
-            val direction = HomeFragmentDirections.actionHomeFragmentToEditNoteFragment(currentNote)
+           val direction = HomeFragmentDirections.actionHomeFragmentToEditNoteFragment(currentNote)
             // Navigate to the EditNoteFragment with the current note as an argument
             it.findNavController().navigate(direction)
         }
