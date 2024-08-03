@@ -50,6 +50,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
         //Initialized Notes view Model
         notesViewModel = (activity as MainActivity).notesViewModel
+        setupHomeRecyclerView()
 
         binding.addNoteFab.setOnClickListener{
             it.findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment)
@@ -88,20 +89,50 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         }
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        TODO("Not yet implemented")
+
+    private fun searchNote(query: String?){
+        val searchQuery = "%$query"
+
+        notesViewModel.searchNote(searchQuery).observe(this){ list->
+            //Create an instance of the adapter
+            val noteAdapter = NoteAdapter()
+            //Submit the list to the adapter
+            noteAdapter.differ.submitList(list)
+        }
     }
 
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    /**
+     * It is called or use , when user is typing in the search view and its shows
+     *  the result of the search
+     */
     override fun onQueryTextChange(newText: String?): Boolean {
-        TODO("Not yet implemented")
+        if(newText != null){
+            searchNote(newText)
+        }
+        return true
+    }
+
+    //Override the onDestroy function to avoid memory leaks
+    override fun onDestroy() {
+        super.onDestroy()
+        homebinding = null
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        TODO("Not yet implemented")
+        menu.clear()
+        menuInflater.inflate(R.menu.home_menu, menu)
+
+        val menuSearch = menu.findItem(R.id.searchMenu).actionView as SearchView
+        menuSearch.isSubmitButtonEnabled = false
+        menuSearch.setOnQueryTextListener(this)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
 
