@@ -25,6 +25,9 @@ import com.example.thenotesapp.viewmodel.NoteViewModelFactory
 // Define the MainActivity class that extends AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
+    lateinit var notesViewModel: NoteViewModel
+
+
     // Declare a late-initialized variable for NoteViewModel
     lateinit var noteViewModel: NoteViewModel
 

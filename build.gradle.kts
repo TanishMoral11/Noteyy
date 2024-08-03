@@ -5,6 +5,8 @@ buildscript {
     dependencies {
         val navVersion = "2.7.5"
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion")
+        classpath ("com.android.tools.build:gradle:7.0.4" )// Use the latest version
+
     }
 }
 

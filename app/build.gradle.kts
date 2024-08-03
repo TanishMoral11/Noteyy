@@ -36,9 +36,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-   viewBinding{
-       enable=true
-   }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
 }
 
 dependencies {
@@ -61,7 +63,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
     // Navigation
-    val navVersion = "2.7.5"
+    val navVersion = "2.5.3"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
