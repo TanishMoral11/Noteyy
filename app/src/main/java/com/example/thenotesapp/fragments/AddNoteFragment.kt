@@ -41,6 +41,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), MenuProvider {
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         notesViewModel = (activity as MainActivity).notesViewModel
+
     }
 
     override fun onDestroyView() {

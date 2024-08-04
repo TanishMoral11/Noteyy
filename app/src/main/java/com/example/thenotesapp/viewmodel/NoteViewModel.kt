@@ -38,7 +38,7 @@ class NoteViewModel(app: Application, private val noteRepository: NoteRepository
             noteRepository.deleteNote(note)
         }
 
-    // Function to update a note in the database
+    // Function to update a note in the da tabase
     // Runs the updateNote function from the repository in a coroutine using viewModelScope
     fun updateNote(note: Note) =
         viewModelScope.launch {

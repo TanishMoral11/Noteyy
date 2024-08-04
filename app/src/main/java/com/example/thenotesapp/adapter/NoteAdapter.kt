@@ -21,9 +21,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 // Import the NoteLayoutBinding class, which is generated from the layout XML file
 import com.example.thenotesapp.databinding.NoteLayoutBinding
+import com.example.thenotesapp.fragments.HomeFragmentDirections
 
 // Import the HomeFragmentDirections class, which is generated from the navigation graph to handle navigation actions
-import com.example.thenotesapp.fragments.HomeFragmentDirections
 
 // Import the Note class from the model package
 import com.example.thenotesapp.model.Note

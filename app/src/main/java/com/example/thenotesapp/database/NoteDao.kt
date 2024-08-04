@@ -3,6 +3,7 @@ package com.example.thenotesapp.database
 
 // Import LiveData from Android Architecture Components for observable data holder
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
 // Import Room's Dao annotation, which marks the interface as a Data Access Object
 import androidx.room.Dao
@@ -51,5 +52,13 @@ interface NoteDao {
     // The query uses LIKE operator to match the search pattern
     // Returns LiveData to observe the search results
     @Query("SELECT * FROM NOTES WHERE noteTitle LIKE :query OR noteDesc LIKE :query")
-    fun searchNote(query: String?): LiveData<List<Note>>
+    fun searchNote(query: String?): LiveData<List<Note>>{
+        return if (query.isNullOrEmpty()){
+            MutableLiveData(emptyList())
+        }
+
+        else {
+            getAllNotes()
+        }
+    }
 }
