@@ -20,8 +20,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val noteRepository = NoteRepository(NoteDatabase.getDatabase(this))
+        // Get the NoteDatabase instance and the NoteDao from it
+        val noteDao = NoteDatabase.getDatabase(this).getNoteDao()
+        // Pass the NoteDao to the NoteRepository
+        val noteRepository = NoteRepository(noteDao)
+        // Create a ViewModelProvider.Factory
         val viewModelProviderFactory = NoteViewModelFactory(application, noteRepository)
+        // Initialize the NoteViewModel using ViewModelProvider
         notesViewModel = ViewModelProvider(this, viewModelProviderFactory)[NoteViewModel::class.java]
         Log.d("MainActivity", "ViewModel initialized: $notesViewModel")
     }

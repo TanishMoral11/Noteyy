@@ -86,7 +86,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         val searchQuery = "%${query.orEmpty()}%"
         notesViewModel.searchNote(searchQuery).observe(viewLifecycleOwner) { list ->
             Log.d("HomeFragment", "Search results: $list")
-            val noteAdapter = NoteAdapter()
+            val noteAdapter = binding.homeRecyclerView.adapter as NoteAdapter
             noteAdapter.differ.submitList(list)
         }
     }
@@ -108,12 +108,12 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menu.clear()
-        menuInflater.inflate(R.menu.home_menu, menu)
 
-        val menuSearch = menu.findItem(R.id.searchMenu).actionView as androidx.appcompat.widget.SearchView
-        menuSearch.isSubmitButtonEnabled = false
-        menuSearch.setOnQueryTextListener(this)
+        menuInflater.inflate(R.menu.home_menu, menu)
+        val searchMenuItem = menu.findItem(R.id.searchMenu)
+       val searchView = searchMenuItem.actionView as SearchView
+        searchView.isSubmitButtonEnabled = false
+        searchView.setOnQueryTextListener(this)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
