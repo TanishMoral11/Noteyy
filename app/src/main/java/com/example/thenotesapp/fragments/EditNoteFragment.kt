@@ -95,8 +95,8 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note), MenuProvider {
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menu.clear()
-        menuInflater.inflate(R.menu.home_menu, menu)
+
+        menuInflater.inflate(R.menu.menu_edit_note, menu)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
