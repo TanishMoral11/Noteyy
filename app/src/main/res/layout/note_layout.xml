@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="200"
-                android:fontFamily="@font/poppins_thin"
+                android:fontFamily="serif"
                 android:text="Note Title"
                 android:textColor="@color/red"
                 android:textSize="18sp"
@@ -33,11 +33,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_thin"
+                android:fontFamily="serif"
                 android:maxHeight="170dp"
                 android:text="Description"
                 android:textColor="@color/pink"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
